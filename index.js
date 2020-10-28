@@ -39,6 +39,7 @@ function handleSubmit() {
   $('form').submit( event => {
     event.preventDefault();
     const userInput = $('#shopping-list-entry').val();
+    $('#shopping-list-entry').val('');
     validateInput(userInput);
   });
 }
