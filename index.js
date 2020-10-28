@@ -1,3 +1,10 @@
+const STORE = [
+  {name: "apples", checked: false},
+  {name: "oranges", checked: false},
+  {name: "milk", checked: true},
+  {name: "bread", checked: false}
+];
+
 function handleDeleteItem() {
   $('ul').on('click', '.shopping-item-delete', function(event) {
     $(this).closest('li').css('display', 'none');
