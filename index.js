@@ -1,12 +1,12 @@
 function handleDeleteItem() {
   $('ul').on('click', '.shopping-item-delete', function(event) {
-    $(event.currentTarget).closest('li').css('display', 'none');
+    $(this).closest('li').css('display', 'none');
   });
 }
 
 function handleCheckItem() {
   $('ul').on('click', '.shopping-item-toggle', function(event) {
-    $(event.currentTarget).closest('li').toggleClass('shopping-item__checked');
+    $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
   });
 
 }
@@ -17,8 +17,7 @@ function addItem(userInput) {
     <span class="shopping-item">${userInput}</span>
     <div class="shopping-item-controls">
       <button class="shopping-item-toggle">
-       
-      <span class="button-label">check</span>
+        <span class="button-label">check</span>
       </button>
       <button class="shopping-item-delete">
         <span class="button-label">delete</span>
