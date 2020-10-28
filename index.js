@@ -1,13 +1,12 @@
 function handleDeleteItem() {
-  $('.shopping-item-delete').click( event => {
-    $(event.currentTarget).closest("li").css('display', 'none');
+  $('ul').on('click', '.shopping-item-delete', function(event) {
+    $(event.currentTarget).closest('li').css('display', 'none');
   });
-
 }
 
 function handleCheckItem() {
-  $('button.shopping-item-toggle').click( event => {
-    $('span.shopping-item').toggleClass('shopping-item__checked');
+  $('ul').on('click', '.shopping-item-toggle', function(event) {
+    $(event.currentTarget).closest('li').toggleClass('shopping-item__checked');
   });
 
 }
@@ -28,25 +27,27 @@ function addItem(userInput) {
   </li>`);
 }
 
+function validateInput(userInput) {
+  if (userInput !== '') {
+    addItem(userInput);
+  } else {
+    throw new Error('Input field cannot be blank.');
+  } 
+}
+
 function handleSubmit() {
   $('form').submit( event => {
     event.preventDefault();
     const userInput = $('#shopping-list-entry').val();
-    addItem(userInput);
+    validateInput(userInput);
   });
-}
-
-function validateInput(userInput) {
-  if (userInput != '') {
-    handleSubmit(userInput);
-  }
 }
 // listen to submit
 // save input value
 // create new <li>
 // add value to <li>
 function main() {
-  validateInput();
+  handleSubmit();
   handleCheckItem();
   handleDeleteItem();
 }
