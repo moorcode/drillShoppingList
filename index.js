@@ -1,9 +1,15 @@
-function handleSubmit() {
-  $('form').submit( event => {
-    event.preventDefault();
-    const userInput = $('#shopping-list-entry').val();
-    addItem(userInput);
+function handleDeleteItem() {
+  $('.shopping-item-delete').click( event => {
+    $(event.currentTarget).closest("li").css('display', 'none');
   });
+
+}
+
+function handleCheckItem() {
+  $('button.shopping-item-toggle').click( event => {
+    $('span.shopping-item').toggleClass('shopping-item__checked');
+  });
+
 }
 
 function addItem(userInput) {
@@ -22,25 +28,25 @@ function addItem(userInput) {
   </li>`);
 }
 
-function handleCheckItem() {
-  $('button.shopping-item-toggle').click( event => {
-    $('span.shopping-item').toggleClass('shopping-item__checked');
+function handleSubmit() {
+  $('form').submit( event => {
+    event.preventDefault();
+    const userInput = $('#shopping-list-entry').val();
+    addItem(userInput);
   });
-
 }
 
-function handleDeleteItem() {
-  $('.shopping-item-delete').click( event => {
-    $(event.currentTarget).closest("li").css('display', 'none');
-  });
-
+function validateInput(userInput) {
+  if (userInput != '') {
+    handleSubmit(userInput);
+  }
 }
 // listen to submit
 // save input value
 // create new <li>
 // add value to <li>
 function main() {
-  handleSubmit();
+  validateInput();
   handleCheckItem();
   handleDeleteItem();
 }
